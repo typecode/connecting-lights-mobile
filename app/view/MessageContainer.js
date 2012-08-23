@@ -1,8 +1,13 @@
-var geolocation_map = Ext.create('connecting-lights-mobile.view.GeolocationMap');
-
 Ext.define("connecting-lights-mobile.view.MessageContainer", {
     extend: 'Ext.Container',
     xtype: 'messagecontainer',
+    requires: [
+        'Ext.TitleBar',
+        'Ext.form.FieldSet',
+        'Ext.field.TextArea',
+        'connecting-lights-mobile.view.GeolocationMap',
+        'connecting-lights-mobile.model.Message'
+    ],
     config: {
         title: 'Contribute',
         iconCls: 'action',
@@ -50,7 +55,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ui: 'next',
                         docked:'bottom',
                         handler: function() {
-                            message_container.animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'left'});
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'left'});
                         }
                     }
                 ],
@@ -79,7 +84,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 ui: 'back',
                                 text: 'Back',
                                 handler: function() {
-                                    message_container.animateActiveItem(this.up('messagecontainer').getComponent('message'), {type: 'slide', direction: 'right'});
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('message'), {type: 'slide', direction: 'right'});
                                 }
                             }
                         ]
@@ -100,7 +105,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ui: 'next',
                         docked:'bottom',
                         handler: function() {
-                            message_container.animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
                         }
                     }
                 ],
@@ -138,31 +143,31 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 ui: 'back',
                                 text: 'Back',
                                 handler: function() {
-                                    message_container.animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'right'});
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'right'});
                                 }
                             }
                         ]
                     },
-                    geolocation_map,
+                    Ext.create('connecting-lights-mobile.view.GeolocationMap'),
                     {
                         xtype: 'button',
                         text: 'Send your message!',
                         ui: 'confirm',
                         docked:'bottom',
                         handler: function() {
-                            message_container.animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
                         }
                     }
                 ],
                 listeners: {
                     activate: function(){
-
+                        this.down('geolocationmap').recenter();
                     },
                     deactivate: function(){
                         var my_geo;
-                        my_geo = this.up('messagecontainer').down('geolocationmap').getGeo();
-                        this.up('messagecontainer').message.lat = my_geo._latitude;
-                        this.up('messagecontainer').message.lng = my_geo._longitude;
+                        my_geo = this.down('geolocationmap').get_position();
+                        //this.up('messagecontainer').message.lat = my_geo._latitude;
+                        //this.up('messagecontainer').message.lng = my_geo._longitude;
                     }
                 }
             },
@@ -188,7 +193,6 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function(){
-                        console.log(this.up('messagecontainer').message);
                         this.up('messagecontainer').message.save();
                     },
                     deactivate: function(){

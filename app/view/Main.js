@@ -1,25 +1,18 @@
-var welcome_container,
-    about_container,
-    message_container,
-    visualize_container;
-
-welcome_container = Ext.create('connecting-lights-mobile.view.WelcomeContainer');
-about_container = Ext.create('connecting-lights-mobile.view.AboutContainer');
-message_container = Ext.create('connecting-lights-mobile.view.MessageContainer');
-visualize_container = Ext.create('connecting-lights-mobile.view.VisualizeContainer');
-
 Ext.define("connecting-lights-mobile.view.Main", {
     extend: 'Ext.tab.Panel',
-    requires: [
-        'Ext.TitleBar'
+    uses: [
+        'connecting-lights-mobile.view.WelcomeContainer',
+        'connecting-lights-mobile.view.AboutContainer',
+        'connecting-lights-mobile.view.MessageContainer',
+        'connecting-lights-mobile.view.VisualizeContainer'
     ],
     config: {
         tabBarPosition: 'bottom',
         items: [
-            welcome_container,
-            about_container,
-            message_container,
-            visualize_container
+            Ext.create('connecting-lights-mobile.view.WelcomeContainer'),
+            Ext.create('connecting-lights-mobile.view.AboutContainer'),
+            Ext.create('connecting-lights-mobile.view.MessageContainer'),
+            Ext.create('connecting-lights-mobile.view.VisualizeContainer')
         ]
     }
 });

@@ -2,7 +2,7 @@ Ext.application({
     name: 'connecting-lights-mobile',
 
     requires: [
-        'Ext.MessageBox'
+        //'connecting-lights-mobile.view.Main'
     ],
 
     views: ['Main'],

@@ -9,7 +9,12 @@
         },
         {
             "path": "app.js",
-            "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
+            "bundle": true,
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/color-picker.js",
+            "bundle": true,
             "update": "delta"
         }
     ],
@@ -17,6 +22,10 @@
     "css": [
         {
             "path": "resources/css/app.css",
+            "update": "delta"
+        },
+        {
+            "path": "resources/css/color-picker.css",
             "update": "delta"
         }
     ],

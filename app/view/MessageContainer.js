@@ -191,7 +191,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         console.log(this.up('messagecontainer').message);
                         this.up('messagecontainer').message.save();
                     },
-                    deactivate: function()
+                    deactivate: function(){
+                        
                     }
                 }
             }

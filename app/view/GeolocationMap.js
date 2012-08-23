@@ -1,6 +1,6 @@
 Ext.define("connecting-lights-mobile.view.GeolocationMap", {
     extend: "Ext.Map",
-    xtype: 'mapview',
+    xtype: 'geolocationmap',
     config: {
         useCurrentLocation: true,
         align:'top',
@@ -12,6 +12,9 @@ Ext.define("connecting-lights-mobile.view.GeolocationMap", {
                     map: map
                 });
             }
+        },
+        get_location: function(){
+            return 'yaa';
         }
     }
 });

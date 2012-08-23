@@ -1,6 +1,9 @@
 Ext.define("connecting-lights-mobile.view.WelcomeContainer", {
     extend: 'Ext.Container',
     xtype: 'welcomecontainer',
+    requires: [
+        'Ext.Img'
+    ],
     config: {
         title: 'Welcome',
         iconCls: 'home',

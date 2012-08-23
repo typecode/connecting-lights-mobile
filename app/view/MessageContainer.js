@@ -1,8 +1,12 @@
-var geolocation_map = Ext.create('connecting-lights-mobile.view.GeolocationMap');
-
 Ext.define("connecting-lights-mobile.view.MessageContainer", {
     extend: 'Ext.Container',
     xtype: 'messagecontainer',
+    requires: [
+        'Ext.TitleBar',
+        'Ext.form.FieldSet',
+        'Ext.field.TextArea',
+        'connecting-lights-mobile.view.GeolocationMap'
+    ],
     config: {
         title: 'Contribute',
         iconCls: 'action',
@@ -143,7 +147,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             }
                         ]
                     },
-                    geolocation_map,
+                    Ext.create('connecting-lights-mobile.view.GeolocationMap'),
                     {
                         xtype: 'button',
                         text: 'Send your message!',

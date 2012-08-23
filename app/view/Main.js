@@ -23,6 +23,7 @@ Ext.define("connecting-lights-mobile.view.Main", {
                         xtype:'image',
                         src: 'resources/images/logo.png',
                         //flex: 1,
+                        width: '100%',
                         height: '35px'
                     },
                     {

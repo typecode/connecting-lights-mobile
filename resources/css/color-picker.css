@@ -1,7 +1,11 @@
 /*  Color picker
 =============================================================================== */
 .color-picker {
-  position:relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -112px;
+  margin-left: -112px;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;

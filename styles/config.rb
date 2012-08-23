@@ -7,6 +7,6 @@ load File.join(dir, '..', '..', 'sencha-touch', 'resources', 'themes')
 # Look for any *.scss files in same directory as this file
 # Place compiled *.css files in the parent directory
 sass_path    = dir
-css_path     = File.join(dir, "..")
-output_style = :expanded
+css_path     = File.join(dir, '..', 'resources', 'css')
+output_style = :compressed
 environment  = :development

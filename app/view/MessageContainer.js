@@ -4,7 +4,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
     extend: 'Ext.Container',
     xtype: 'messagecontainer',
     config: {
-        title: 'Message',
+        title: 'Contribute',
         iconCls: 'action',
         layout: 'card',
         defaults:{

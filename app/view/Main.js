@@ -1,3 +1,5 @@
+var message_container = Ext.create('connecting-lights-mobile.view.MessageContainer');
+
 Ext.define("connecting-lights-mobile.view.Main", {
     extend: 'Ext.tab.Panel',
     requires: [
@@ -27,41 +29,7 @@ Ext.define("connecting-lights-mobile.view.Main", {
                 ].join('')
             },
 
-            {
-                title: 'Submit',
-                iconCls: 'action',
-                xtype: 'formpanel',
-                layout: 'vbox',
-
-                items: [
-                    {
-                        xtype: 'label',
-                        html: [
-                            '<div>',
-                            '<p>Enter a message to send to the wall!</p>',
-                            '</div>'
-                        ].join('')
-                    },
-                    {
-                        xtype:'fieldset',
-                        items:[
-                            {
-                                xtype: 'textareafield',
-                                label: 'Message'
-                            }
-                        ]
-                        
-                    },
-                    {
-                        xtype: 'button',
-                        text: 'Send Message',
-                        ui: 'confirm',
-                        handler: function() {
-                            this.up('formpanel').submit();
-                        }
-                    }
-                ]
-            },
+            message_container,
 
             {
                 title: 'Vizualize',

@@ -17,7 +17,7 @@ html, body {
 }
 
 #appLoadingIndicator > * {
-    background-color: rgb(240,240,240);
+    background-color: rgb(138,204,177);
     display: inline-block;
     height: 30px;
     -webkit-border-radius: 15px;

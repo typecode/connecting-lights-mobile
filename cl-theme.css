@@ -9524,3 +9524,22 @@ input[type="search"]::-webkit-search-cancel-button {
 .x-html {
   color: #f4f4f4;
 }
+/* line 38, styles/cl-theme.scss */
+.x-html a {
+  color: #8accb1;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* line 49, styles/cl-theme.scss */
+.main-title {
+  display: block;
+  background: url("../images/logo.png") no-repeat 0 0;
+  width: 298px;
+  height: 24px;
+  margin: 0 auto;
+}
+/* line 50, styles/cl-theme.scss */
+.main-title > span {
+  display: none;
+}

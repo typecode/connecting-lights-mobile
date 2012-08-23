@@ -34,4 +34,23 @@ $tabs-dark: darken($base-color, 20%);
 
 .x-html {
 	color: rgb(244,244,244);
+
+	a {
+		color: $active-color;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+}
+
+
+// components
+
+.main-title {
+	> span { display: none; }
+	display: block;
+	background: url('../images/logo.png') no-repeat 0 0;
+	width: 298px;
+	height: 24px;
+	margin: 0 auto;
 }

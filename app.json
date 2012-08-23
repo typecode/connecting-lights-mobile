@@ -5,7 +5,9 @@
 
     "js": [
         {
-            "path": "sdk/sencha-touch.js"
+            "path": "sdk/sencha-touch.js",
+            "bundle": true,
+            "update": "delta"
         },
         {
             "path": "app.js",
@@ -21,7 +23,15 @@
 
     "css": [
         {
+            "path": "resources/css/initial-load.css",
+            "update": "delta"
+        },
+        {
             "path": "resources/css/app.css",
+            "update": "delta"
+        },
+        {
+            "path": "resources/css/cl-theme.css",
             "update": "delta"
         },
         {

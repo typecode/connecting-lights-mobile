@@ -59,7 +59,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
                     },
                     deactivate: function(){
-                        this.up('messagecontainer').message = this.up('messagecontainer').down('textareafield').getValue();
+                        this.up('messagecontainer').message.message = this.up('messagecontainer').down('textareafield').getValue();
                     }
                 }
             },
@@ -192,7 +192,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         this.up('messagecontainer').message.save();
                     },
                     deactivate: function(){
-                        
+
                     }
                 }
             }

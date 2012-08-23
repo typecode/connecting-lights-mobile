@@ -10,6 +10,8 @@ $font-family: "ff-dagny-web-pro", sans-serif;
 $base-gradient: 'matte';
 $tabs-dark: darken($base-color, 20%);
 
+$include-border-radius: false;
+
 
 // defaults
 
@@ -17,20 +19,13 @@ $tabs-dark: darken($base-color, 20%);
 
 @include sencha-panel;
 @include sencha-buttons;
-@include sencha-sheet;
-@include sencha-picker;
 @include sencha-tabs;
 @include sencha-toolbar;
 @include sencha-toolbar-forms;
-@include sencha-indexbar;
 @include sencha-list;
 @include sencha-layout;
-@include sencha-carousel;
 @include sencha-form;
-@include sencha-msgbox;
 
-
-// base
 
 .x-html {
 	color: rgb(244,244,244);
@@ -43,14 +38,10 @@ $tabs-dark: darken($base-color, 20%);
 
 }
 
-
-// components
-
-.intro {
-	img {
-		display: block; 
-		max-width: 100%;
-		height: auto;
-		margin: 0 auto .5em;
-	}
+.x-body > .x-inner, 
+.x-container > .x-inner,
+.x-button {
+	-webkit-border-radius: 0; 
+	-moz-border-radius: 0; 
+	border-radius: 0; 
 }

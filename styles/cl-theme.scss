@@ -46,11 +46,11 @@ $tabs-dark: darken($base-color, 20%);
 
 // components
 
-.main-title {
-	> span { display: none; }
-	display: block;
-	background: url('../images/logo.png') no-repeat 0 0;
-	width: 298px;
-	height: 24px;
-	margin: 0 auto;
+.intro {
+	img {
+		display: block; 
+		max-width: 100%;
+		height: auto;
+		margin: 0 auto .5em;
+	}
 }

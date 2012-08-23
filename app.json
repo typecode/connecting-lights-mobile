@@ -1,0 +1,61 @@
+{
+    "name": "connecting-lights-mobile",
+    "indexHtmlPath": "index.html",
+    "url": null,
+
+    "js": [
+        {
+            "path": "sdk/sencha-touch.js"
+        },
+        {
+            "path": "app.js",
+            "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
+            "update": "delta"
+        }
+    ],
+
+    "css": [
+        {
+            "path": "resources/css/app.css",
+            "update": "delta"
+        }
+    ],
+
+    "appCache": {
+        "cache": [
+            "index.html"
+        ],
+        "network": [
+            "*"
+        ],
+        "fallback": []
+    },
+
+    "resources": [
+        "resources/images",
+        "resources/icons",
+        "resources/startup"
+    ],
+
+    "ignore": [
+        "\.svn$"
+    ],
+
+    "archivePath": "archive",
+
+    "buildPaths": {
+        "testing": "build/testing",
+        "production": "build/production",
+        "package": "build/package",
+        "native": "build/native"
+    },
+
+    "buildOptions": {
+        "product": "touch",
+        "minVersion": 3,
+        "debug": false,
+        "logger": "no"
+    },
+
+    "id": "d59ede70-ed2f-11e1-ac99-eb850fa1d41b"
+}

@@ -1,4 +1,12 @@
-var message_container = Ext.create('connecting-lights-mobile.view.MessageContainer');
+var welcome_container,
+    about_container,
+    message_container,
+    visualize_container;
+
+welcome_container = Ext.create('connecting-lights-mobile.view.WelcomeContainer');
+about_container = Ext.create('connecting-lights-mobile.view.AboutContainer');
+message_container = Ext.create('connecting-lights-mobile.view.MessageContainer');
+visualize_container = Ext.create('connecting-lights-mobile.view.VisualizeContainer');
 
 Ext.define("connecting-lights-mobile.view.Main", {
     extend: 'Ext.tab.Panel',
@@ -8,54 +16,10 @@ Ext.define("connecting-lights-mobile.view.Main", {
     config: {
         tabBarPosition: 'bottom',
         items: [
-            
-            {
-                title: 'Welcome',
-                iconCls: 'home',
-
-                styleHtmlContent: true,
-                scrollable: true,
-
-                layout: 'vbox',
-
-                items:[
-                    {
-                        xtype:'image',
-                        src: 'resources/images/logo.png',
-                        //flex: 1,
-                        height: '35px'
-                    },
-                    {
-                        xtype:'image',
-                        src: 'resources/images/wall.jpeg',
-                        //flex: 1,
-                        height: '200px'
-                    },
-                    {
-                        xtype: 'container',
-                        html: [
-                            '<div>',
-                            '<p><strong>Connecting Light</strong> is a digital art installation along Hadrian’s Wall World Heritage Site. The installation consists of hundreds of large-scale, light-filled balloons transmitting colors from one-to-another, creating a communication network spanning over seventy miles.</p>',
-                            '<p>The installation is open to the public from Friday, August 31st to Saturday, September 1st.</p>',
-                            '<p>View the full site <a href="http://connectinglights.com">here</a>.</p>',
-                            '</div>'
-                        ].join('')
-                    }
-                ]
-            },
-
+            welcome_container,
+            about_container,
             message_container,
-
-            {
-                title: 'Vizualize',
-                iconCls: 'maps',
-
-                items: [
-                    {
-                        docked: 'top'
-                    }
-                ]
-            }
+            visualize_container
         ]
     }
 });

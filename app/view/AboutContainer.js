@@ -34,6 +34,11 @@ Ext.define("connecting-lights-mobile.view.AboutContainer", {
                     '<img src="resources/images/about.png"></img>'
                 ].join('')
             }
-        ]
+        ],
+        listeners:{
+            activate: function(){
+                console.log(this.element.dom.outerHeight);
+            }
+        }
     }
 });

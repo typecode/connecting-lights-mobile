@@ -79,7 +79,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         items:[
                             {
                                 xtype: 'textareafield',
-                                rows:10
+                                rows:10,
+                                placeHolder:'Input a message!'
                             }
                         ]
                         

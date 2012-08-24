@@ -27,6 +27,29 @@ $include-border-radius: false;
 @include sencha-form;
 
 
+.welcome {
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	h1 {
+		text-align: center;
+		margin: 0 auto .5em;
+	}
+}
+
+.about-scroll {
+	position: absolute;
+	background: red;
+
+	img {
+		display: block;
+		width: auto;
+		max-height: 100%;
+	}
+
+}
+
 .x-html {
 	color: rgb(244,244,244);
 

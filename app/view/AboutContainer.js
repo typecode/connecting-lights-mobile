@@ -18,6 +18,10 @@ Ext.define("connecting-lights-mobile.view.AboutContainer", {
             align: 'stretch'
         },
 
+        style:{
+            margin: '0px'
+        },
+
         items:[
             {
                 docked: 'top',

@@ -2,7 +2,7 @@ Ext.define("connecting-lights-mobile.view.WelcomeContainer", {
     extend: 'Ext.Container',
     xtype: 'welcomecontainer',
     requires: [
-        'Ext.Img'
+        
     ],
     config: {
         title: 'Welcome',
@@ -13,21 +13,11 @@ Ext.define("connecting-lights-mobile.view.WelcomeContainer", {
 
         layout: 'vbox',
 
+        style:{
+            margin: '0px'
+        },
+
         items:[
-        /*
-            {
-                xtype:'image',
-                src: 'resources/images/logo.png',
-                //flex: 1,
-                height: '35px'
-            },
-            {
-                xtype:'image',
-                src: 'resources/images/wall.jpeg',
-                //flex: 1,
-                height: '200px'
-            },
-        */
             {
                 xtype: 'container',
                 html: [

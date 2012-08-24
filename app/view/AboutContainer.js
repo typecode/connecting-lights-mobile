@@ -7,32 +7,23 @@ Ext.define("connecting-lights-mobile.view.AboutContainer", {
     config: {
         title: 'About',
         iconCls: 'info',
-
+        layout: {
+            type: 'hbox',
+            align: 'middle',
+            maxHeight: '100%'
+        },
         styleHtmlContent: false,
         scrollable: {
             direction: 'horizontal',
             directionLock: true
         },
-        layout: {
-            type: 'vbox',
-            align: 'stretch'
-        },
-
-        style:{
-            margin: '0px'
-        },
-
+        style: 'background-color: white',
         items:[
             {
-                docked: 'top',
-                xtype: 'titlebar',
-                title: 'Connect the Lights'
-            },
-            {
-                xtype: 'container',
-                html: [
-                    '<img src="resources/images/about.png"></img>'
-                ].join('')
+                html: '<img src="../resources/images/about.png" />',
+                resizable: true,
+                autoHeight: true,
+                maxHeight: '100%'
             }
         ],
         listeners:{

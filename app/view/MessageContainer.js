@@ -1,4 +1,4 @@
-var message_prompts;
+var MESSAGE_PROMPTS, active_prompt;
 
 MESSAGE_PROMPTS = [
     "Cities I have been to:   ",
@@ -11,6 +11,8 @@ MESSAGE_PROMPTS = [
     "Places I've lived:   ",
     ""
 ];
+
+active_prompt = this.active_prompt = Math.floor(Math.random() * MESSAGE_PROMPTS.length);
 
 Ext.define("connecting-lights-mobile.view.MessageContainer", {
     extend: 'Ext.Container',
@@ -59,19 +61,25 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 ui:'normal',
                                 iconCls:'refresh',
                                 iconMask: true,
-                                text: 'Reload Prompt',
                                 handler: function() {
-                                    console.log(this.up('container'));
+                                    active_prompt++;
+                                    if(active_prompt >= MESSAGE_PROMPTS.length){
+                                        active_prompt = 0;
+                                    }
+                                    this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[active_prompt]);
+                                    this.up('messagecontainer').down('textareafield').focus();
                                 },
                                 align: 'right'
                             }
                         ]
                     },
                     {
-                        xtype:'fieldset',
+                        xtype:'container',
+                        layout:'fit',
                         items:[
                             {
-                                xtype: 'textareafield'
+                                xtype: 'textareafield',
+                                rows:10
                             }
                         ]
                         
@@ -88,8 +96,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function(){
-                        this.active_prompt = Math.floor(Math.random() * MESSAGE_PROMPTS.length);
-                        this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[this.active_prompt]);
+                        this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[active_prompt]);
+                        this.up('messagecontainer').down('textareafield').focus();
                     },
                     deactivate: function(){
                         this.up('messagecontainer').message.message = this.up('messagecontainer').down('textareafield').getValue();

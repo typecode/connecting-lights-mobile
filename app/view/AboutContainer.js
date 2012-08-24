@@ -20,7 +20,7 @@ Ext.define("connecting-lights-mobile.view.AboutContainer", {
         style: 'background-color: white',
         items:[
             {
-                html: '<img src="../resources/images/about.png" />',
+                html: '<img src="resources/images/about.png" />',
                 resizable: true,
                 autoHeight: true,
                 maxHeight: '100%'

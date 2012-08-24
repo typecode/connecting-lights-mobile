@@ -20,6 +20,15 @@ Ext.define("connecting-lights-mobile.view.GeolocationMap", {
         }
     },
     config: {
+        mapOptions:{
+            mapTypeId: google.maps.MapTypeId.TERRAIN,
+            streetViewControl: false,
+            zoom: 9,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL
+            },
+            center: new google.maps.LatLng(54.9952, -2.43609)
+        },
         useCurrentLocation: {
             autoUpdate: false
         },
@@ -30,18 +39,39 @@ Ext.define("connecting-lights-mobile.view.GeolocationMap", {
                 var me;
                 me = this;
                 this.map = map;
+                this.getGeo().on('locationerror', function(){
+                    if(!me.marker){
+                        me.marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(54.9952, -2.43609),
+                            map: me.map,
+                            draggable: true
+                        }, this);
+                    }
+                });
                 this.getGeo().on('locationupdate', function(){
-                    me.marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(me._geo.getLatitude(), me._geo.getLongitude()),
-                        map: me.map,
-                        draggable: true
-                    }, this);
-                    google.maps.event.addListener(me.marker, 'dragend', function(){
-                        me.marker_postion = me.marker.getPosition();
-                        setTimeout(function(){
-                            me.map.panTo(me.marker.getPosition());
-                        }, 500);
-                    });
+                    var center_timeout;
+                    center_timeout = null;
+                    if(!me.marker){
+                        me.marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(me._geo.getLatitude(), me._geo.getLongitude()),
+                            map: me.map,
+                            draggable: true
+                        }, this);
+                        me.map.setZoom(13);
+                        google.maps.event.addListener(me.map, 'dragstart', function(){
+                            if(center_timeout){
+                                clearTimeout(center_timeout);
+                                center_timeout = null;
+                            }
+                        });
+                        google.maps.event.addListener(me.marker, 'dragend', function(){
+                            me.marker_postion = me.marker.getPosition();
+                            center_timeout = setTimeout(function(){
+                                //me.map.panTo(me.marker.getPosition());
+                                me.map.setCenter(me.marker.getPosition());
+                            }, 500);
+                        });
+                    }
                 });
                 this.getGeo().updateLocation();
             }

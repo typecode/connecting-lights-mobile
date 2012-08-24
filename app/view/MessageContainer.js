@@ -48,8 +48,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
             {
                 itemId: 'message',
-                xtype: 'container',
-                layout: 'fit',
+                xtype: 'formpanel',
+                layout: 'vbox',
                 items:[
                     {
                         docked: 'top',
@@ -74,8 +74,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ]
                     },
                     {
-                        xtype:'container',
-                        layout:'fit',
+                        xtype:'fieldset',
+                        //layout:'fit',
                         items:[
                             {
                                 xtype: 'textareafield',
@@ -89,7 +89,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'button',
                         text: 'Choose Color',
                         ui: 'next',
-                        docked:'bottom',
+                        //docked:'bottom',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'left'});
                         }
@@ -108,8 +108,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
             {
                 itemId: 'color',
-                xtype: 'container',
-                layout: 'fit',
+                xtype: 'formpanel',
+                layout: 'vbox',
+                scrollable: false,
                 cls:'transition-background',
                 items: [
                     {
@@ -128,8 +129,15 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ]
                     },
                     {
+                        itemId: 'messageText',
+                        xtype: 'container',
+                        cls:'padding',
+                        styleHtmlContent: true
+                    },
+                    {
                         xtype: 'container',
                         styleHtmlContent: true,
+                        height: '280px',
                         html: [
                             '<div id="color-picker" class="color-picker">',
                             '<div class="handle"></div>',
@@ -138,26 +146,33 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ].join('')
                     },
                     {
-                        xtype: 'button',
-                        text: 'Select a Location',
-                        ui: 'next',
-                        docked:'bottom',
-                        handler: function() {
-                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
-                        }
+                        xtype: 'container',
+                        cls: 'padding',
+                        items: [
+                            {
+                                xtype: 'button',
+                                text: 'Select a Location',
+                                //ui: 'next',
+                                //docked:'bottom',
+                                handler: function() {
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
+                                }
+                            }
+                        ]
                     }
                 ],
                 listeners: {
                     activate: function() {
                         var me;
                         me = this;
+                        this.getComponent('messageText').setHtml('<p>' + me.up('messagecontainer').message.get('message') + '</p>');
                         if(!this.color_picker){
                             this.color_picker = new ColorPicker({
                                 $e: $('#color-picker'),
                                 src: 'resources/images/color-picker-HD.png'
                             });
                             this.color_picker.$e.bind('color:picked', function(e, d){
-                                me.element.dom.style.background = 'rgb('+d.r+', '+d.g+', '+d.b+')';
+                                me.element.dom.style.background = 'rgba('+d.r+', '+d.g+', '+d.b+', 1)';
                                 me.up('messagecontainer').message.set('r', d.r);
                                 me.up('messagecontainer').message.set('g', d.g);
                                 me.up('messagecontainer').message.set('b', d.b);
@@ -169,8 +184,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
             {
                 itemId: 'map',
-                xtype: 'container',
+                xtype: 'formpanel',
                 layout: 'fit',
+                scrollable: false,
                 items:[
                     {
                         docked: 'top',
@@ -189,13 +205,20 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     Ext.create('connecting-lights-mobile.view.GeolocationMap'),
                     {
-                        xtype: 'button',
-                        text: 'Send your message!',
-                        ui: 'confirm',
-                        docked:'bottom',
-                        handler: function() {
-                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
-                        }
+                        xtype: 'container',
+                        cls: 'padding',
+                        docked: 'bottom',
+                        items: [
+                            {
+                                xtype: 'button',
+                                text: 'Send your message!',
+                                ui: 'confirm',
+                                docked:'bottom',
+                                handler: function() {
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                                }
+                            }
+                        ]
                     }
                 ],
                 listeners: {

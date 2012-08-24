@@ -20,6 +20,11 @@ Ext.define("connecting-lights-mobile.view.AboutContainer", {
 
         items:[
             {
+                docked: 'top',
+                xtype: 'titlebar',
+                title: 'Connect the Lights'
+            },
+            {
                 xtype: 'container',
                 html: [
                     '<img src="resources/images/about.png"></img>'

@@ -109,6 +109,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 itemId: 'color',
                 xtype: 'container',
                 layout: 'fit',
+                cls:'transition-background',
                 items: [
                     {
                         docked: 'top',
@@ -155,6 +156,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 src: 'resources/images/color-picker-HD.png'
                             });
                             this.color_picker.$e.bind('color:picked', function(e, d){
+                                me.element.dom.style.background = 'rgb('+d.r+', '+d.g+', '+d.b+')';
                                 me.up('messagecontainer').message.r = d.r;
                                 me.up('messagecontainer').message.g = d.g;
                                 me.up('messagecontainer').message.b = d.b;

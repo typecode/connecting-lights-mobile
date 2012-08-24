@@ -192,7 +192,6 @@
 		this.$e = internal.$e;
 
 		fn.init();
-		console.log(internal);
 	};
 
 }());

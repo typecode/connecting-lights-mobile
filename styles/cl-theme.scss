@@ -27,6 +27,10 @@ $include-border-radius: false;
 @include sencha-form;
 
 
+.padding {
+	padding: 1em;
+}
+
 .welcome {
 	img {
 		max-width: 100%;
@@ -34,7 +38,8 @@ $include-border-radius: false;
 	}
 	h1 {
 		text-align: center;
-		margin: 0 auto .5em;
+		margin: 0 auto;
+		padding: .3em;
 	}
 }
 
@@ -68,3 +73,8 @@ $include-border-radius: false;
 	-moz-border-radius: 0; 
 	border-radius: 0; 
 }
+
+.x-inner, 
+.x-html, 
+.x-layout-vbox, 
+.x-scroll-scroller { padding: 0; }

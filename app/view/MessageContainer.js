@@ -100,7 +100,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         this.up('messagecontainer').down('textareafield').focus();
                     },
                     deactivate: function(){
-                        this.up('messagecontainer').message.message = this.up('messagecontainer').down('textareafield').getValue();
+                        this.up('messagecontainer').message.set('message', this.up('messagecontainer').down('textareafield').getValue());
                     }
                 }
             },
@@ -157,9 +157,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             });
                             this.color_picker.$e.bind('color:picked', function(e, d){
                                 me.element.dom.style.background = 'rgb('+d.r+', '+d.g+', '+d.b+')';
-                                me.up('messagecontainer').message.r = d.r;
-                                me.up('messagecontainer').message.g = d.g;
-                                me.up('messagecontainer').message.b = d.b;
+                                me.up('messagecontainer').message.set('r', d.r);
+                                me.up('messagecontainer').message.set('g', d.g);
+                                me.up('messagecontainer').message.set('b', d.b);
                             });
                         }
                     }
@@ -204,8 +204,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     deactivate: function(){
                         var my_geo;
                         my_geo = this.down('geolocationmap').get_position();
-                        //this.up('messagecontainer').message.lat = my_geo._latitude;
-                        //this.up('messagecontainer').message.lng = my_geo._longitude;
+                        this.up('messagecontainer').message.set('lat', my_geo[0]);
+                        this.up('messagecontainer').message.set('lng', my_geo[1]);
                     }
                 }
             },
@@ -214,7 +214,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
             {  //3
                 itemId: 'thanks',
                 xtype: 'container',
-                layout: 'fit',
+                layout: 'vbox',
                 items: [
                     {
                         docked: 'top',
@@ -227,11 +227,19 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         html: [
                             '<p>Thanks!</p>'
                         ].join('')
+                    },
+                    {
+                        itemId:'saved_object',
+                        xtype: 'container',
+                        styleHtmlContent: true,
+                        html: [
+                            '<p>Thanks!</p>'
+                        ].join('')
                     }
                 ],
                 listeners: {
                     activate: function(){
-                        this.up('messagecontainer').message.save();
+                        this.getComponent('saved_object').setHtml(Ext.JSON.encode(this.up('messagecontainer').message.getData()));
                     },
                     deactivate: function(){
 

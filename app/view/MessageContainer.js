@@ -1,3 +1,17 @@
+var message_prompts;
+
+MESSAGE_PROMPTS = [
+    "Cities I have been to:   ",
+    "People I'm connected to:   ",
+    "Borders I've crossed:   ",
+    "Things that feel like home:   ",
+    "",
+    "I feel connected to:   ",
+    "I communicate via:   ",
+    "Places I've lived:   ",
+    ""
+];
+
 Ext.define("connecting-lights-mobile.view.MessageContainer", {
     extend: 'Ext.Container',
     xtype: 'messagecontainer',
@@ -38,7 +52,20 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         docked: 'top',
                         xtype: 'titlebar',
-                        title: 'Write a Message'
+                        title: 'Write a Message',
+                        items:[
+                            {
+                                xtype: 'button',
+                                ui:'normal',
+                                iconCls:'refresh',
+                                iconMask: true,
+                                text: 'Reload Prompt',
+                                handler: function() {
+                                    console.log(this.up('container'));
+                                },
+                                align: 'right'
+                            }
+                        ]
                     },
                     {
                         xtype:'fieldset',
@@ -61,7 +88,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function(){
-
+                        this.active_prompt = Math.floor(Math.random() * MESSAGE_PROMPTS.length);
+                        this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[this.active_prompt]);
                     },
                     deactivate: function(){
                         this.up('messagecontainer').message.message = this.up('messagecontainer').down('textareafield').getValue();

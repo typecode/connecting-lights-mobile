@@ -5,7 +5,7 @@
 
     "js": [
         {
-            "path": "sdk/sencha-touch-all.js",
+            "path": "sdk/sencha-touch.js",
             "bundle": true,
             "update": "delta"
         },

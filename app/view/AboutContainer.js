@@ -28,7 +28,7 @@ Ext.define("connecting-lights-mobile.view.AboutContainer", {
         ],
         listeners:{
             activate: function(){
-                console.log(this.element.dom.outerHeight);
+                
             }
         }
     }

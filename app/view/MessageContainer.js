@@ -19,6 +19,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
     xtype: 'messagecontainer',
     requires: [
         'Ext.TitleBar',
+        'Ext.form.Panel',
         'Ext.form.FieldSet',
         'Ext.field.TextArea',
         'connecting-lights-mobile.view.GeolocationMap',
@@ -172,7 +173,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 src: 'resources/images/color-picker-HD.png'
                             });
                             this.color_picker.$e.bind('color:picked', function(e, d){
-                                me.element.dom.style.background = 'rgba('+d.r+', '+d.g+', '+d.b+', 1)';
+                                me.element.dom.style.background = 'rgba('+d.r+', '+d.g+', '+d.b+', 1.0)';
                                 me.up('messagecontainer').message.set('r', d.r);
                                 me.up('messagecontainer').message.set('g', d.g);
                                 me.up('messagecontainer').message.set('b', d.b);

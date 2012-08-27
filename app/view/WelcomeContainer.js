@@ -22,7 +22,7 @@ Ext.define("connecting-lights-mobile.view.WelcomeContainer", {
                 xtype: 'container',
                 html: [
                     '<div class="welcome">',
-                    '   <h1><img src="resources/images/logo.png"></img></h1>',
+                    '   <h1><img src="resources/images/logo-highres.png"></img></h1>',
                     '   <img src="resources/images/wall.jpeg"></img>',
                     '   <div class="padding">',
                     '     <p><strong>Connecting Light</strong> is a digital art installation along Hadrian’s Wall World Heritage Site. The installation consists of hundreds of large-scale, light-filled balloons transmitting colors from one-to-another, creating a communication network spanning over seventy miles.</p>',

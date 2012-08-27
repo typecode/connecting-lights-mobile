@@ -67,11 +67,25 @@ $include-border-radius: false;
 .x-layout-vbox, 
 .x-scroll-scroller { padding: 0; }
 
-/* tablets */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+// tablets
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px),
+	   only screen and (min-width : 1000px) {
 
 	body {
 		font-size: 150%;
+	}
+
+	.padding {
+		padding: 2em 4em;
+	}
+
+	.welcome {
+		h1 {
+			padding-top: .6em;
+			padding-bottom: .4em;
+		}
 	}
 
 	.x-tabbar.x-docked-bottom .x-tab .x-button-label, 

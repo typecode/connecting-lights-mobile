@@ -70,15 +70,14 @@ $include-border-radius: false;
 
 // tablets
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px),
-	   only screen and (min-width : 1000px) {
+@media only screen and (min-width : 600px) {
 
 	body {
 		font-size: 150%;
 	}
 
 	.padding {
-		padding: 2em 4em;
+		padding: 2em 3.5em;
 	}
 
 	.welcome {

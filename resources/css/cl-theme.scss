@@ -66,3 +66,22 @@ $include-border-radius: false;
 .x-html, 
 .x-layout-vbox, 
 .x-scroll-scroller { padding: 0; }
+
+/* tablets */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+	body {
+		font-size: 150%;
+	}
+
+	.x-tabbar.x-docked-bottom .x-tab .x-button-label, 
+	.x-tabbar.x-docked-bottom .x-tab .x-hasbadge .x-badge, 
+	.x-hasbadge .x-tabbar.x-docked-bottom .x-tab .x-badge {
+		font-size: 15px;
+	}
+
+	.x-tabbar.x-docked-bottom .x-tab {
+		min-width: 4.3em;
+	}
+
+}

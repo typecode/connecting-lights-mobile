@@ -1,11 +1,11 @@
 {
     "name": "connecting-lights-mobile",
     "indexHtmlPath": "index.html",
-    "url": null,
+    "url": "http://127.0.0.1/~andrewmahon/connecting-lights-mobile/",
 
     "js": [
         {
-            "path": "sdk/sencha-touch.js",
+            "path": "sdk/sencha-touch-all.js",
             "bundle": true,
             "update": "delta"
         },

@@ -109,9 +109,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
             {
                 itemId: 'color',
-                xtype: 'formpanel',
+                xtype: 'container',
                 layout: 'vbox',
-                scrollable: false,
+                //scrollable: false,
                 cls:'transition-background',
                 items: [
                     {

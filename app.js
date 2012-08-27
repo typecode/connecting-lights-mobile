@@ -2,7 +2,7 @@ Ext.application({
     name: 'connecting-lights-mobile',
 
     requires: [
-        //'connecting-lights-mobile.view.Main'
+        'connecting-lights-mobile.view.Main'
     ],
 
     views: ['Main'],

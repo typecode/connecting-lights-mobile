@@ -24,10 +24,7 @@ Ext.define("connecting-lights-mobile.view.FeedContainer", {
         iconCls: 'more',
         store: myStore,
         plugins: [
-            {
-                xclass: 'Ext.plugin.PullRefresh',
-                pullRefreshText: 'Pull down for new messages!'
-            }
+            {xclass: 'Ext.plugin.PullRefresh'}, {xclass: 'Ext.plugin.ListPaging'}
         ],
         styleHtmlContent: true,
         itemTpl: [

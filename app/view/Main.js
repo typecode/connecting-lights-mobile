@@ -5,7 +5,8 @@ Ext.define("connecting-lights-mobile.view.Main", {
         'connecting-lights-mobile.view.WelcomeContainer',
         'connecting-lights-mobile.view.AboutContainer',
         'connecting-lights-mobile.view.MessageContainer',
-        'connecting-lights-mobile.view.VisualizeContainer'
+        'connecting-lights-mobile.view.VisualizeContainer',
+        'connecting-lights-mobile.view.FeedContainer'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -13,7 +14,8 @@ Ext.define("connecting-lights-mobile.view.Main", {
             Ext.create('connecting-lights-mobile.view.WelcomeContainer'),
             Ext.create('connecting-lights-mobile.view.AboutContainer'),
             Ext.create('connecting-lights-mobile.view.MessageContainer'),
-            Ext.create('connecting-lights-mobile.view.VisualizeContainer')
+            Ext.create('connecting-lights-mobile.view.VisualizeContainer'),
+            Ext.create('connecting-lights-mobile.view.FeedContainer')
         ]
     }
 });

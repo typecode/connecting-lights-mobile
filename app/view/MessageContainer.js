@@ -1,3 +1,23 @@
+/*
+    'Segedunum Fort'  54.98764    -1.532115
+    'Vallum Farm & Tea Room'  55.008751   -1.927018
+    'The Errington Arms Public House' 55.012558   -2.02156
+    'Housesteads Roman Fort'  55.011822   -2.331782
+    'Once Brewed Visitor Centre'  54.996319   -2.388512
+    'Walltown Quarry' 54.98698    -2.519565
+    'Birdoswald Visitor Centre'   54.990021   -2.603127
+    'Walby Farm Park Visitor Centre'  54.935692   -2.874963
+    'Carlisle Castle Visitor Centre'  54.897182   -2.942473
+    'Castle Keep' 54.968742   -1.61038
+    'Brocolitia'  55.035591   -2.220269
+    'Housesteads' 55.010132   -2.32266
+    'Steel Rigg'  55.002991   -2.390963
+    'Cawfields'   54.992886   -2.450167
+    'Tullie House Viewing Point'  54.895824   -2.940662
+    'Burgh by Sands'  54.922157   -3.046147
+    'Bowness on Solway'   54.95208    -3.207218
+*/
+
 var MESSAGE_PROMPTS, active_prompt;
 
 MESSAGE_PROMPTS = [
@@ -76,7 +96,6 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype:'fieldset',
-                        //layout:'fit',
                         items:[
                             {
                                 xtype: 'textareafield',
@@ -156,7 +175,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 //ui: 'next',
                                 //docked:'bottom',
                                 handler: function() {
-                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location'), {type: 'slide', direction: 'left'});
                                 }
                             }
                         ]
@@ -166,7 +185,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     activate: function() {
                         var me;
                         me = this;
-                        this.getComponent('messageText').setHtml('<p>' + me.up('messagecontainer').message.get('message') + '</p>');
+                        this.getComponent('messageText').setHtml('<p class="color-message">' + me.up('messagecontainer').message.get('message') + '</p>');
                         if(!this.color_picker){
                             this.color_picker = new ColorPicker({
                                 $e: $('#color-picker'),
@@ -179,6 +198,83 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 me.up('messagecontainer').message.set('blue', d.b);
                             });
                         }
+                    }
+                }
+            },
+
+            {
+                itemId: 'location',
+                xtype: 'formpanel',
+                layout: 'vbox',
+                items:[
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Select a Location',
+                        items:[
+                           
+                        ]
+                    },
+                    {
+                        xtype: 'container',
+                        cls:'padding',
+                        styleHtmlContent: true,
+                        html: ['<p class="context">Select a viewing station:</p>'].join('')
+                    },
+                    {
+                        xtype:'fieldset',
+                        items:[
+                            {
+                                xtype: 'selectfield',
+                                placeHolder:'Select a Location!',
+                                options: [
+                                    {text: 'Birdoswald Visitor Centre', value: '54.990021 -2.603127'},
+                                    {text: 'Bowness on Solway', value: '54.95208 -3.207218'},
+                                    {text: 'Brocolitia', value: '55.035591 -2.220269'},
+                                    {text: 'Burgh by Sands', value: '54.922157 -3.046147'},
+                                    {text: 'Carlisle Castle Visitor Centre', value: '54.897182 -2.942473'},
+                                    {text: 'Castle Keep', value: '54.968742 -1.61038'},
+                                    {text: 'Cawfields', value: '54.992886 -2.450167'},
+                                    {text: 'Housesteads', value: '55.010132 -2.32266'},
+                                    {text: 'Housesteads Roman Fort', value:  '55.011822 -2.331782'},
+                                    {text: 'Once Brewed Visitor Centre', value: '54.996319 -2.388512'},
+                                    {text: 'Segedunum Fort', value: '54.98764 -1.532115'},
+                                    {text: 'Steel Rigg', value: '55.002991 -2.390963'},
+                                    {text: 'The Errington Arms Public House', value: '55.012558 -2.02156'},
+                                    {text: 'Tullie House Viewing Point', value: '54.895824 -2.940662'},
+                                    {text: 'Vallum Farm & Tea Room', value:  '55.008751 -1.927018'},
+                                    {text: 'Walby Farm Park Visitor Centre', value: '54.935692 -2.874963'},
+                                    {text: 'Walltown Quarry', value: '54.98698 -2.519565'}
+                                ]
+                            }
+                        ]
+                        
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Select Location on Map',
+                        ui: 'next',
+                        //docked:'bottom',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Send your message!',
+                        ui: 'confirm',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                        }
+                    }
+                ],
+                listeners: {
+                    activate: function(){
+                        this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[active_prompt]);
+                        this.up('messagecontainer').down('textareafield').focus();
+                    },
+                    deactivate: function(){
+                        this.up('messagecontainer').message.set('message', this.up('messagecontainer').down('textareafield').getValue());
                     }
                 }
             },
@@ -199,7 +295,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 ui: 'back',
                                 text: 'Back',
                                 handler: function() {
-                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'right'});
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location'), {type: 'slide', direction: 'right'});
                                 }
                             }
                         ]

@@ -1,5 +1,6 @@
 Ext.define("connecting-lights-mobile.view.Main", {
     extend: 'Ext.tab.Panel',
+    xtype:'main',
     uses: [
         'connecting-lights-mobile.view.WelcomeContainer',
         'connecting-lights-mobile.view.AboutContainer',

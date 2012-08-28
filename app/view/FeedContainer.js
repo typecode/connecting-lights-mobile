@@ -3,7 +3,8 @@ var myStore = Ext.create('Ext.data.Store', {
     proxy: {
         type: 'ajax',
         url : '/connecting-lights-backend/messages.json',
-        startParam: 'since_id',
+        //startParam: 'since_id',
+        limitParam: 'count',
         reader: {
             type: 'json',
             rootProperty: 'users'
@@ -16,7 +17,7 @@ Ext.define("connecting-lights-mobile.view.FeedContainer", {
     extend: 'Ext.dataview.List',
     xtype: 'feedcontainer',
     requires: [
-        'Ext.Img'
+        
     ],
     config: {
         title: 'Feed',
@@ -30,12 +31,13 @@ Ext.define("connecting-lights-mobile.view.FeedContainer", {
         ],
         styleHtmlContent: true,
         itemTpl: [
-            '<div class="color-box"></div>',
+            '<div class="color-box" style="background-color: rgb({red}, {green}, {blue});"></div>',
             '<div class="message">{message}</div>'
         ],
         listeners:{
             activate: function(){
                 
+                this.getStore().load();
             }
         }
     }

@@ -14,8 +14,8 @@ Ext.define("connecting-lights-mobile.view.Main", {
             Ext.create('connecting-lights-mobile.view.WelcomeContainer'),
             Ext.create('connecting-lights-mobile.view.AboutContainer'),
             Ext.create('connecting-lights-mobile.view.MessageContainer'),
-            Ext.create('connecting-lights-mobile.view.VisualizeContainer'),
-            Ext.create('connecting-lights-mobile.view.FeedContainer')
+            Ext.create('connecting-lights-mobile.view.FeedContainer'),
+            Ext.create('connecting-lights-mobile.view.VisualizeContainer')
         ]
     }
 });

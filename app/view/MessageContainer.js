@@ -187,11 +187,11 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         me = this;
                         this.getComponent('messageText').setHtml('<p class="color-msg"><span>&ldquo;</span>' + me.up('messagecontainer').message.get('message') + '</p>');
                         if(!this.color_picker){
-                            color_picker_src = 'resources/images/color-picker.png',
+                            color_picker_src = 'resources/images/color-picker.png';
                             color_picker_height = '195px';
                             if($(window).height() > 520){
                                 $('#color-picker').addClass('hd');
-                                color_picker_src = 'resources/images/color-picker-HD.png',
+                                color_picker_src = 'resources/images/color-picker-HD.png';
                                 color_picker_height = '280px';
                             }
                             this.color_picker = new ColorPicker({
@@ -371,12 +371,30 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ].join('')
                     },
                     {
-                        xtype: 'button',
-                        text: 'View the wall live!',
-                        docked: 'bottom',
-                        handler: function() {
-                            this.up('main').setActiveItem(this.up('visualizecontainer'));
-                        }
+                        xtype: 'container',
+                        cls: 'padding',
+                        items: [
+                            {
+                                xtype: 'button',
+                                text: 'View a feed of new messages!',
+                                handler: function() {
+                                    this.up('main').setActiveItem(this.up('main').down('feedcontainer'));
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'container',
+                        cls: 'padding',
+                        items: [
+                            {
+                                xtype: 'button',
+                                text: 'Vizualize the wall live!',
+                                handler: function() {
+                                    this.up('main').setActiveItem(this.up('main').down('visualizecontainer'));
+                                }
+                            }
+                        ]
                     }
                 ],
                 listeners: {

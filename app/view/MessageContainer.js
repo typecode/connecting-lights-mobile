@@ -212,7 +212,13 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'titlebar',
                         title: 'Select a Location',
                         items:[
-                           
+                           {
+                                xtype: 'button',
+                                text: 'View the wall live!',
+                                handler: function() {
+                                    this.up('main').setActiveItem(this.up('visualizecontainer'));
+                                }
+                            }
                         ]
                     },
                     {
@@ -245,7 +251,15 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                     {text: 'Vallum Farm & Tea Room', value:  '55.008751 -1.927018'},
                                     {text: 'Walby Farm Park Visitor Centre', value: '54.935692 -2.874963'},
                                     {text: 'Walltown Quarry', value: '54.98698 -2.519565'}
-                                ]
+                                ],
+                                listeners: {
+                                    change: function(me, newval){
+                                        var my_geo;
+                                        my_geo = newval.split(' ');
+                                        this.up('messagecontainer').message.set('latitude', my_geo[0]);
+                                        this.up('messagecontainer').message.set('longitude', my_geo[1]);
+                                    }
+                                }
                             }
                         ]
                         
@@ -254,7 +268,6 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'button',
                         text: 'Select Location on Map',
                         ui: 'next',
-                        //docked:'bottom',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
                         }
@@ -270,11 +283,10 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function(){
-                        this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[active_prompt]);
-                        this.up('messagecontainer').down('textareafield').focus();
+
                     },
                     deactivate: function(){
-                        this.up('messagecontainer').message.set('message', this.up('messagecontainer').down('textareafield').getValue());
+                        
                     }
                 }
             },
@@ -346,16 +358,16 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'container',
                         styleHtmlContent: true,
                         html: [
-                            '<p>Thanks!</p>'
+                            '<p class="thanks-text">Thanks for submitting your message!</p>'
                         ].join('')
                     },
                     {
-                        itemId:'saved_object',
-                        xtype: 'container',
-                        styleHtmlContent: true,
-                        html: [
-                            '<p>Thanks!</p>'
-                        ].join('')
+                        xtype: 'button',
+                        ui: 'back',
+                        text: 'Back',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location'), {type: 'slide', direction: 'right'});
+                        }
                     }
                 ],
                 listeners: {
@@ -376,13 +388,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 }
                             },
                             success: function(response){
-                                var text = response.responseText;
-                                console.log(text);
-                                // process server response here
+                                
                             }
                         });
-                        this.getComponent('saved_object').setHtml(Ext.JSON.encode(this.up('messagecontainer').message.getData()));
-
                     },
                     deactivate: function(){
 

@@ -183,13 +183,18 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function() {
-                        var me;
+                        var me, color_picker_src;
                         me = this;
                         this.getComponent('messageText').setHtml('<p class="color-message">' + me.up('messagecontainer').message.get('message') + '</p>');
                         if(!this.color_picker){
+                            color_picker_src = 'resources/images/color-picker.png';
+                            if($(window).height() > 520){
+                                $('#color-picker').addClass('hd');
+                                color_picker_src = 'resources/images/color-picker-HD.png';
+                            }
                             this.color_picker = new ColorPicker({
                                 $e: $('#color-picker'),
-                                src: 'resources/images/color-picker-HD.png'
+                                src: color_picker_src
                             });
                             this.color_picker.$e.bind('color:picked', function(e, d){
                                 me.element.dom.style.background = 'rgba('+d.r+', '+d.g+', '+d.b+', 1.0)';
@@ -212,11 +217,12 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'titlebar',
                         title: 'Select a Location',
                         items:[
-                           {
+                            {
                                 xtype: 'button',
-                                text: 'View the wall live!',
+                                ui: 'back',
+                                text: 'Back',
                                 handler: function() {
-                                    this.up('main').setActiveItem(this.up('visualizecontainer'));
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'right'});
                                 }
                             }
                         ]
@@ -363,10 +369,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype: 'button',
-                        ui: 'back',
-                        text: 'Back',
+                        text: 'View the wall live!',
                         handler: function() {
-                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location'), {type: 'slide', direction: 'right'});
+                            this.up('main').setActiveItem(this.up('visualizecontainer'));
                         }
                     }
                 ],

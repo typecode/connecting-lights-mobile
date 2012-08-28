@@ -268,8 +268,16 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         Ext.Ajax.request({
                             url: '/connecting-lights-backend/messages.json',
                             method: 'POST',
-                            params: {
-                                message: pthis.up('messagecontainer').message.getData()
+                            jsonData: {
+                                message: {
+                                    red: this.up('messagecontainer').message.get('red'),
+                                    green: this.up('messagecontainer').message.get('green'),
+                                    blue: this.up('messagecontainer').message.get('blue'),
+                                    latitude: this.up('messagecontainer').message.get('latitude'),
+                                    longitude: this.up('messagecontainer').message.get('longitude'),
+                                    location_on_wall: this.up('messagecontainer').message.get('location_on_wall'),
+                                    message: this.up('messagecontainer').message.get('message')
+                                }
                             },
                             success: function(response){
                                 var text = response.responseText;

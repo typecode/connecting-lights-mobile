@@ -67,11 +67,15 @@ $include-border-radius: false;
 .x-layout-vbox, 
 .x-scroll-scroller { padding: 0; }
 
+.context {
+	color: rgb(100,100,100);
+	font-style: italic;
+}
 
 p.color-msg {
 	position: relative;
 	display: block;
-	margin: 0 0 0 .1em;
+	margin: 0 1.5em;
 	padding-top: 0;
 	padding-bottom: 0;
 

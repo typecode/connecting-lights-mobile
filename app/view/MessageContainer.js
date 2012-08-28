@@ -286,7 +286,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ui: 'confirm',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
-                        }
+                        },
+                        style: 'margin-top: 16px;'
                     }
                 ],
                 listeners: {

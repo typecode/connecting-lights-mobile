@@ -373,6 +373,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'View the wall live!',
+                        docked: 'bottom',
                         handler: function() {
                             this.up('main').setActiveItem(this.up('visualizecontainer'));
                         }

@@ -67,6 +67,51 @@ $include-border-radius: false;
 .x-layout-vbox, 
 .x-scroll-scroller { padding: 0; }
 
+.x-list {
+	background: $page-bg-color;
+}
+.x-list-normal .x-list-item .x-list-item-label {
+	border-top: 1px solid $base-color;
+
+	.color-box {
+		float: left;
+		width: 25px;
+		height: 25px;
+		background: rgb(40,40,40);
+
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+
+	.message {
+		margin-left: 38px;
+	}
+
+}
+.x-list .x-list-item .x-list-item-label {
+	min-height: 2.6em;
+	font-size: 1.25em;
+	color: rgb(240,240,240);
+	padding: 0.75em 1em;
+}
+.x-list-pullrefresh-updated {
+	padding: 1em;
+	color: rgb(180,180,180);
+}
+.x-list-pullrefresh {
+	text-align: center;
+}
+.x-list-pullrefresh h3 {
+	padding: 1em 0 0;
+	margin: 0 0 .5em;
+	color: rgb(255,255,255);
+	font-style: italic;
+}
+.x-list-pullrefresh-release h3 {
+	color: $active-color;
+}
+
 .context {
 	color: rgb(100,100,100);
 	font-style: italic;

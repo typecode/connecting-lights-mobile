@@ -151,7 +151,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         itemId: 'messageText',
                         xtype: 'container',
-                        //cls:'padding',
+                        cls:'padding',
                         styleHtmlContent: true
                     },
                     {

@@ -65,4 +65,5 @@
 .color-picker.hd .handle {
   width: 65px;
   height: 65px;
+  background-image: url("../images/color-picker-handle.png");
 }

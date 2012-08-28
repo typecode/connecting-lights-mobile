@@ -269,7 +269,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             url: '/connecting-lights-backend/messages.json',
                             method: 'POST',
                             params: {
-                                message: Ext.JSON.encode(pthis.up('messagecontainer').message.getData())
+                                message: pthis.up('messagecontainer').message.getData()
                             },
                             success: function(response){
                                 var text = response.responseText;

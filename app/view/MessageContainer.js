@@ -132,7 +132,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         itemId: 'messageText',
                         xtype: 'container',
-                        cls:'padding',
+                        //cls:'padding',
                         styleHtmlContent: true
                     },
                     {
@@ -166,7 +166,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     activate: function() {
                         var me;
                         me = this;
-                        this.getComponent('messageText').setHtml('<p>' + me.up('messagecontainer').message.get('message') + '</p>');
+                        this.getComponent('messageText').setHtml('<p class="color-msg padding"><span>&ldquo;</span>' + me.up('messagecontainer').message.get('message') + '</p>');
                         if(!this.color_picker){
                             this.color_picker = new ColorPicker({
                                 $e: $('#color-picker'),

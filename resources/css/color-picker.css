@@ -7,12 +7,14 @@
      -o-transition: background-color 500ms cubic-bezier(0.785, 0.135, 0.150, 0.860); 
         transition: background-color 500ms cubic-bezier(0.785, 0.135, 0.150, 0.860); /* easeInOutCirc */
 }
+
+
 .color-picker {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -112px;
-  margin-left: -112px;
+  margin-top: -68px;
+  margin-left: -68px;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -24,8 +26,8 @@
 }
 .color-picker canvas {
   display: block;
-  width: 225px;
-  height: 225px;
+  width: 135px;
+  height: 135px;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -43,7 +45,24 @@
   -ms-user-select: none;
   user-select: none;
   position: absolute;
+  width: 33px;
+  height: 33px;
+  background-image: url("../images/color-picker-handle-HD.png");
+}
+
+
+/*
+  hd
+*/
+.color-picker.hd {
+  margin-top: -112px;
+  margin-left: -112px;
+}
+.color-picker.hd canvas {
+  width: 225px;
+  height: 225px;
+}
+.color-picker.hd .handle {
   width: 65px;
   height: 65px;
-  background-image: url("../images/color-picker-handle-HD.png");
 }

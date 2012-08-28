@@ -68,6 +68,22 @@ $include-border-radius: false;
 .x-scroll-scroller { padding: 0; }
 
 
+p.color-msg {
+	margin: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+
+	> span {
+		position: relative;
+		font-size: 4.5em;
+		line-height: 1em;
+		top: .5em;
+		left: -.1em;
+	}
+
+}
+
+
 // tablets
 
 @media only screen and (min-width : 600px) {

@@ -69,16 +69,18 @@ $include-border-radius: false;
 
 
 p.color-msg {
-	margin: 0;
+	position: relative;
+	display: block;
+	margin: 0 0 0 .1em;
 	padding-top: 0;
 	padding-bottom: 0;
 
 	> span {
-		position: relative;
+		position: absolute;
 		font-size: 4.5em;
 		line-height: 1em;
-		top: .5em;
-		left: -.1em;
+		top: -.08em;
+		left: -.5em;
 	}
 
 }

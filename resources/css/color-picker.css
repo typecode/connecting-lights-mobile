@@ -47,7 +47,7 @@
   position: absolute;
   width: 33px;
   height: 33px;
-  background-image: url("../images/color-picker-handle-HD.png");
+  background-image: url("../images/color-picker-handle.png");
 }
 
 
@@ -65,5 +65,5 @@
 .color-picker.hd .handle {
   width: 65px;
   height: 65px;
-  background-image: url("../images/color-picker-handle.png");
+  background-image: url("../images/color-picker-handle-HD.png");
 }

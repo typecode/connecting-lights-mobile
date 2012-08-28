@@ -174,9 +174,9 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             });
                             this.color_picker.$e.bind('color:picked', function(e, d){
                                 me.element.dom.style.background = 'rgba('+d.r+', '+d.g+', '+d.b+', 1.0)';
-                                me.up('messagecontainer').message.set('r', d.r);
-                                me.up('messagecontainer').message.set('g', d.g);
-                                me.up('messagecontainer').message.set('b', d.b);
+                                me.up('messagecontainer').message.set('red', d.r);
+                                me.up('messagecontainer').message.set('green', d.g);
+                                me.up('messagecontainer').message.set('blue', d.b);
                             });
                         }
                     }
@@ -229,8 +229,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     deactivate: function(){
                         var my_geo;
                         my_geo = this.down('geolocationmap').get_position();
-                        this.up('messagecontainer').message.set('lat', my_geo[0]);
-                        this.up('messagecontainer').message.set('lng', my_geo[1]);
+                        this.up('messagecontainer').message.set('latitude', my_geo[0]);
+                        this.up('messagecontainer').message.set('longitude', my_geo[1]);
                     }
                 }
             },
@@ -264,7 +264,21 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function(){
+
+                        Ext.Ajax.request({
+                            url: '/connecting-lights-backend/messages.json',
+                            method: 'POST',
+                            params: {
+                                message: Ext.JSON.encode(this.up('messagecontainer').message.getData())
+                            },
+                            success: function(response){
+                                var text = response.responseText;
+                                console.log(text);
+                                // process server response here
+                            }
+                        });
                         this.getComponent('saved_object').setHtml(Ext.JSON.encode(this.up('messagecontainer').message.getData()));
+
                     },
                     deactivate: function(){
 

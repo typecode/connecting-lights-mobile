@@ -77,21 +77,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'titlebar',
                         title: 'Write a Message',
                         items:[
-                            /*{
-                                xtype: 'button',
-                                ui:'normal',
-                                iconCls:'refresh',
-                                iconMask: true,
-                                handler: function() {
-                                    active_prompt++;
-                                    if(active_prompt >= MESSAGE_PROMPTS.length){
-                                        active_prompt = 0;
-                                    }
-                                    this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[active_prompt]);
-                                    this.up('messagecontainer').down('textareafield').focus();
-                                },
-                                align: 'right'
-                            }*/
+
                         ]
                     },
                     {
@@ -285,12 +271,6 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             }
                         ]
                     },
-                    /*{
-                        xtype: 'container',
-                        cls:'padding',
-                        styleHtmlContent: true,
-                        html: ['<p class="context">How do you want to select your location?</p>'].join('')
-                    },*/
                     {
                         xtype: 'button',
                         itemId: 'geolocation_button',
@@ -319,15 +299,6 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         },
                         style: 'margin-top: 20px'
                     }
-                    /*{
-                        xtype: 'button',
-                        text: 'Send your message!',
-                        ui: 'confirm',
-                        handler: function() {
-                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
-                        },
-                        style: 'margin-top: 16px;'
-                    }*/
                 ],
                 listeners: {
                     activate: function(){
@@ -342,6 +313,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
             {
                 itemId: 'location_viewing',
                 xtype: 'formpanel',
+                scrollable: false,
                 layout: 'vbox',
                 items:[
                     {
@@ -366,50 +338,38 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         html: ['<p class="context">Select a viewing station:</p>'].join('')
                     },
                     {
-                        xtype:'fieldset',
+                        itemId:'locationList',
+                        xtype:'list',
                         styleHtmlContent: true,
-                        items:[
-                            {
-                                xtype: 'selectfield',
-                                name:'location',
-                                placeHolder:'Select a Location!',
-                                //styleHtmlContent: true,
-                                usePicker: false,
-                                defaultPhonePickerConfig:{
-                                    styleHtmlContent: true
-                                },
-                                defaultTabletPickerConfig:{
-                                    styleHtmlContent: true
-                                },
-                                options: [
-                                    {text: 'Birdoswald Visitor Centre', value: '54.990021 -2.603127'},
-                                    {text: 'Bowness on Solway', value: '54.95208 -3.207218'},
-                                    {text: 'Brocolitia', value: '55.035591 -2.220269'},
-                                    {text: 'Burgh by Sands', value: '54.922157 -3.046147'},
-                                    {text: 'Carlisle Castle Visitor Centre', value: '54.897182 -2.942473'},
-                                    {text: 'Castle Keep', value: '54.968742 -1.61038'},
-                                    {text: 'Cawfields', value: '54.992886 -2.450167'},
-                                    {text: 'Housesteads', value: '55.010132 -2.32266'},
-                                    {text: 'Housesteads Roman Fort', value:  '55.011822 -2.331782'},
-                                    {text: 'Once Brewed Visitor Centre', value: '54.996319 -2.388512'},
-                                    {text: 'Segedunum Fort', value: '54.98764 -1.532115'},
-                                    {text: 'Steel Rigg', value: '55.002991 -2.390963'},
-                                    {text: 'The Errington Arms Public House', value: '55.012558 -2.02156'},
-                                    {text: 'Tullie House Viewing Point', value: '54.895824 -2.940662'},
-                                    {text: 'Vallum Farm & Tea Room', value:  '55.008751 -1.927018'},
-                                    {text: 'Walby Farm Park Visitor Centre', value: '54.935692 -2.874963'},
-                                    {text: 'Walltown Quarry', value: '54.98698 -2.519565'}
-                                ],
-                                listeners: {
-                                    change: function(me, newval){
-                                        var my_geo;
-                                        my_geo = newval.split(' ');
-                                        this.up('messagecontainer').message.set('latitude', my_geo[0]);
-                                        this.up('messagecontainer').message.set('longitude', my_geo[1]);
-                                    }
-                                }
+                        height:'195px',
+                        data: [
+                            {text: 'Birdoswald Visitor Centre', value: '54.990021 -2.603127'},
+                            {text: 'Bowness on Solway', value: '54.95208 -3.207218'},
+                            {text: 'Brocolitia', value: '55.035591 -2.220269'},
+                            {text: 'Burgh by Sands', value: '54.922157 -3.046147'},
+                            {text: 'Carlisle Castle Visitor Centre', value: '54.897182 -2.942473'},
+                            {text: 'Castle Keep', value: '54.968742 -1.61038'},
+                            {text: 'Cawfields', value: '54.992886 -2.450167'},
+                            {text: 'Housesteads', value: '55.010132 -2.32266'},
+                            {text: 'Housesteads Roman Fort', value:  '55.011822 -2.331782'},
+                            {text: 'Once Brewed Visitor Centre', value: '54.996319 -2.388512'},
+                            {text: 'Segedunum Fort', value: '54.98764 -1.532115'},
+                            {text: 'Steel Rigg', value: '55.002991 -2.390963'},
+                            {text: 'The Errington Arms Public House', value: '55.012558 -2.02156'},
+                            {text: 'Tullie House Viewing Point', value: '54.895824 -2.940662'},
+                            {text: 'Vallum Farm & Tea Room', value:  '55.008751 -1.927018'},
+                            {text: 'Walby Farm Park Visitor Centre', value: '54.935692 -2.874963'},
+                            {text: 'Walltown Quarry', value: '54.98698 -2.519565'}
+                        ],
+                        itemTpl: '{text}',
+                        listeners: {
+                            select: function(me, record){
+                                var my_geo;
+                                my_geo = record.get('value').split(' ');
+                                this.up('messagecontainer').message.set('latitude', my_geo[0]);
+                                this.up('messagecontainer').message.set('longitude', my_geo[1]);
                             }
-                        ]
+                        }
                         
                     },
                     {
@@ -417,7 +377,10 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         text: 'Send your message!',
                         ui: 'confirm',
                         handler: function() {
-                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                            if(this.up('formpanel').getComponent('locationList').hasSelection()){
+                                this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                            }
+                            
                         },
                         style: 'margin-top: 16px;'
                     }

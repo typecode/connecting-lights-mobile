@@ -231,15 +231,15 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             }
                         ]
                     },
-                    {
+                    /*{
                         xtype: 'container',
                         cls:'padding',
                         styleHtmlContent: true,
                         html: ['<p class="context">How do you want to select your location?</p>'].join('')
-                    },
+                    },*/
                     {
                         xtype: 'button',
-                        text: 'Use GeoLocation',
+                        text: 'Automatically',
                         ui: 'next',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map_geo'), {type: 'slide', direction: 'left'});
@@ -247,7 +247,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype: 'button',
-                        text: 'Select a Viewing Location',
+                        text: 'By Viewing Location',
                         ui: 'next',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_viewing'), {type: 'slide', direction: 'left'});
@@ -255,13 +255,13 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype: 'button',
-                        text: 'Select Location on Map',
+                        text: 'By Location on a Map',
                         ui: 'next',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map'), {type: 'slide', direction: 'left'});
                         }
-                    },
-                    {
+                    }
+                    /*{
                         xtype: 'button',
                         text: 'Send your message!',
                         ui: 'confirm',
@@ -269,7 +269,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
                         },
                         style: 'margin-top: 16px;'
-                    }
+                    }*/
                 ],
                 listeners: {
                     activate: function(){

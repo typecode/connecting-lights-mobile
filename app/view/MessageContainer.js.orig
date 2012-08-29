@@ -240,7 +240,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'Automatically',
-                        ui: 'next',
+                        itemId: 'geolocation_button',
+                        ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map_geo'), {type: 'slide', direction: 'left'});
                         }
@@ -248,7 +249,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'By Viewing Location',
-                        ui: 'next',
+                        ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_viewing'), {type: 'slide', direction: 'left'});
                         }
@@ -256,7 +257,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'By Location on a Map',
-                        ui: 'next',
+                        ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map'), {type: 'slide', direction: 'left'});
                         }

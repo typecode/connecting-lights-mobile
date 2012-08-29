@@ -108,7 +108,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'Choose Color',
-                        ui: 'next',
+                        ui: 'forward',
                         //docked:'bottom',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'left'});
@@ -173,7 +173,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             {
                                 xtype: 'button',
                                 text: 'Select a Location',
-                                //ui: 'next',
+                                ui: 'forward',
                                 //docked:'bottom',
                                 handler: function() {
                                     this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_select'), {type: 'slide', direction: 'left'});
@@ -241,7 +241,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'button',
                         itemId: 'geolocation_button',
                         text: 'Use GeoLocation',
-                        ui: 'next',
+                        ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map_geo'), {type: 'slide', direction: 'left'});
                         }
@@ -249,7 +249,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'Select a Viewing Location',
-                        ui: 'next',
+                        ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_viewing'), {type: 'slide', direction: 'left'});
                         }
@@ -257,7 +257,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     {
                         xtype: 'button',
                         text: 'Select Location on Map',
-                        ui: 'next',
+                        ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map'), {type: 'slide', direction: 'left'});
                         }

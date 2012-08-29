@@ -155,6 +155,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         styleHtmlContent: true
                     },
                     {
+                        itemId: 'color-picker-container',
                         xtype: 'container',
                         styleHtmlContent: true,
                         height: '280px',
@@ -194,6 +195,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 color_picker_src = 'resources/images/color-picker-HD.png';
                                 color_picker_height = '280px';
                             }
+                            this.getComponent('color-picker-container').setHeight(color_picker_height);
                             this.color_picker = new ColorPicker({
                                 $e: $('#color-picker'),
                                 src: color_picker_src

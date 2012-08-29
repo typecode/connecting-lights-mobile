@@ -245,7 +245,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 xtype: 'selectfield',
                                 name:'location',
                                 placeHolder:'Select a Location!',
-                                styleHtmlContent: true,
+                                //styleHtmlContent: true,
                                 usePicker: false,
                                 defaultPhonePickerConfig:{
                                     styleHtmlContent: true

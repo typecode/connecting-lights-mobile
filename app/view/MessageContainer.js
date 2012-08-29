@@ -237,10 +237,20 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype:'fieldset',
+                        styleHtmlContent: true,
                         items:[
                             {
                                 xtype: 'selectfield',
+                                name:'location',
                                 placeHolder:'Select a Location!',
+                                styleHtmlContent: true,
+                                usePicker: true,
+                                defaultPhonePickerConfig:{
+                                    styleHtmlContent: true
+                                },
+                                defaultTabletPickerConfig:{
+                                    styleHtmlContent: true
+                                },
                                 options: [
                                     {text: 'Birdoswald Visitor Centre', value: '54.990021 -2.603127'},
                                     {text: 'Bowness on Solway', value: '54.95208 -3.207218'},

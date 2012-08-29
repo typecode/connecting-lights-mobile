@@ -239,6 +239,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype: 'button',
+                        itemId: 'geolocation_button',
                         text: 'Use GeoLocation',
                         ui: 'next',
                         handler: function() {

@@ -86,6 +86,16 @@ Ext.define("connecting-lights-mobile.view.GeolocationMap", {
         align:'top',
         height: '100%',
         listeners: {
+            initialize: function(){
+                var me;
+                me = this;
+                this.getGeo().on('locationerror', function(){
+                    me.up('messagecontainer').getComponent('location_select').getComponent('geolocation_button').hide();
+                });
+                this.getGeo().on('locationupdate', function(){
+                    me.up('messagecontainer').getComponent('location_select').getComponent('geolocation_button').show();
+                });
+            },
             maprender : function(comp, map){
                 var me;
                 me = this;

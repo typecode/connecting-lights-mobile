@@ -10,7 +10,7 @@ $font-family: "ff-dagny-web-pro", sans-serif;
 $base-gradient: 'matte';
 $tabs-dark: darken($base-color, 20%);
 
-$include-border-radius: false;
+$include-border-radius: true;
 
 
 // defaults
@@ -54,14 +54,6 @@ $include-border-radius: false;
 
 }
 
-.x-body > .x-inner, 
-.x-container > .x-inner,
-.x-button {
-	-webkit-border-radius: 0; 
-	-moz-border-radius: 0; 
-	border-radius: 0; 
-}
-
 .x-inner, 
 .x-html, 
 .x-layout-vbox, 
@@ -70,7 +62,7 @@ $include-border-radius: false;
 .x-list {
 	background: $page-bg-color;
 }
-.x-list-normal .x-list-item .x-list-item-label {
+#ext-feedcontainer-1.x-list-normal .x-list-item .x-list-item-label {
 	border-top: 1px solid $base-color;
 
 	.color-box {
@@ -89,21 +81,23 @@ $include-border-radius: false;
 	}
 
 }
-.x-list .x-list-item .x-list-item-label {
+#ext-feedcontainer-1.x-list .x-list-item .x-list-item-label {
 	min-height: 2.6em;
 	font-size: 1.25em;
 	color: rgb(240,240,240);
 	padding: 0.75em 1em;
 }
 .x-list-pullrefresh-updated {
-	padding: 1em;
+	padding: 0 1em 1em;
 	color: rgb(180,180,180);
 }
-.x-list-pullrefresh {
+.x-list-pullrefresh,
+.x-list-paging-msg {
 	text-align: center;
 }
-.x-list-pullrefresh h3 {
-	padding: 1em 0 0;
+.x-list-pullrefresh h3,
+.x-list-paging-msg {
+	padding: .75em 0 0;
 	margin: 0 0 .5em;
 	color: rgb(255,255,255);
 	font-style: italic;

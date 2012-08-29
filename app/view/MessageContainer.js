@@ -77,7 +77,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'titlebar',
                         title: 'Write a Message',
                         items:[
-                            {
+                            /*{
                                 xtype: 'button',
                                 ui:'normal',
                                 iconCls:'refresh',
@@ -91,7 +91,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                     this.up('messagecontainer').down('textareafield').focus();
                                 },
                                 align: 'right'
-                            }
+                            }*/
                         ]
                     },
                     {
@@ -100,10 +100,63 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             {
                                 xtype: 'textareafield',
                                 rows:10,
-                                placeHolder:'Input a message!'
+                                placeHolder:'Input a message!',
+                                listeners: {
+                                    keyup: function(){
+                                        this.up('formpanel').getComponent('actionbar').getComponent('counter-text').setHtml('<p class="context">' + this.getValue().length + '/140</p>');
+                                        if(this.getValue().length > 140){
+                                            this.setValue(this.last_value);
+                                            return;
+                                        }
+                                        this.last_value = this.getValue();
+                                    },
+                                    change: function(){
+                                        this.up('formpanel').getComponent('actionbar').getComponent('counter-text').setHtml('<p class="context">' + this.getValue().length + '/140</p>');
+                                        if(this.getValue().length > 140){
+                                            this.setValue(this.last_value);
+                                            return;
+                                        }
+                                        this.last_value = this.getValue();
+                                    }
+                                }
                             }
                         ]
                         
+                    },
+                    {
+                        itemId:'actionbar',
+                        xtype: 'container',
+                        layout: 'hbox',
+                        items: [
+                            {
+                                itemId: 'counter-text',
+                                xtype: 'container',
+                                styleHtmlContent: true,
+                                flex:3,
+                                html: [
+                                    '<p class="context">0/140</p>'
+                                ].join('')
+                            },
+                            {
+                                xtype: 'container',
+                                flex:6
+                            },
+                            {
+                                xtype: 'button',
+                                iconCls:'refresh',
+                                iconMask: true,
+                                flex:2,
+                                handler: function() {
+                                    active_prompt++;
+                                    if(active_prompt >= MESSAGE_PROMPTS.length){
+                                        active_prompt = 0;
+                                    }
+                                    this.up('messagecontainer').down('textareafield').setValue(MESSAGE_PROMPTS[active_prompt]);
+                                    this.up('messagecontainer').down('textareafield').focus();
+                                },
+                                align: 'right'
+                            }
+                        ]
                     },
                     {
                         xtype: 'button',

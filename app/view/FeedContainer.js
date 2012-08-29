@@ -1,18 +1,3 @@
-var myStore = Ext.create('Ext.data.Store', {
-    model: 'connecting-lights-mobile.model.Message',
-    proxy: {
-        type: 'ajax',
-        url : '/connecting-lights-backend/messages.json',
-        //startParam: 'since_id',
-        limitParam: 'count',
-        reader: {
-            type: 'json',
-            rootProperty: 'users'
-        }
-    },
-    autoLoad: true
-});
-
 Ext.define("connecting-lights-mobile.view.FeedContainer", {
     extend: 'Ext.dataview.List',
     xtype: 'feedcontainer',
@@ -22,19 +7,25 @@ Ext.define("connecting-lights-mobile.view.FeedContainer", {
     config: {
         title: 'Feed',
         iconCls: 'more',
-        store: myStore,
+        store: Ext.create('connecting-lights-mobile.store.FeedStore'),
         plugins: [
-            {xclass: 'Ext.plugin.PullRefresh'}, {xclass: 'Ext.plugin.ListPaging'}
+            {
+                xclass: 'Ext.plugin.PullRefresh'
+            },
+            {
+                xclass: 'Ext.plugin.ListPaging',
+                autoPaging: true
+            }
         ],
         styleHtmlContent: true,
+        disableSelection: true,
+        limit: 10,
         itemTpl: [
             '<div class="color-box" style="background-color: rgb({red}, {green}, {blue});"></div>',
             '<div class="message">{message}</div>'
         ],
         listeners:{
             activate: function(){
-                
-                this.getStore().load();
             }
         }
     }

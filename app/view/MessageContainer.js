@@ -176,7 +176,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 //ui: 'next',
                                 //docked:'bottom',
                                 handler: function() {
-                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location'), {type: 'slide', direction: 'left'});
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_select'), {type: 'slide', direction: 'left'});
                                 }
                             }
                         ]
@@ -212,7 +212,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
             },
 
             {
-                itemId: 'location',
+                itemId: 'location_select',
                 xtype: 'formpanel',
                 layout: 'vbox',
                 items:[
@@ -227,6 +227,76 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 text: 'Back',
                                 handler: function() {
                                     this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('color'), {type: 'slide', direction: 'right'});
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'container',
+                        cls:'padding',
+                        styleHtmlContent: true,
+                        html: ['<p class="context">How do you want to select your location?</p>'].join('')
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Use GeoLocation',
+                        ui: 'next',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map_geo'), {type: 'slide', direction: 'left'});
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Select a Viewing Location',
+                        ui: 'next',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_viewing'), {type: 'slide', direction: 'left'});
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Select Location on Map',
+                        ui: 'next',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map'), {type: 'slide', direction: 'left'});
+                        }
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'Send your message!',
+                        ui: 'confirm',
+                        handler: function() {
+                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                        },
+                        style: 'margin-top: 16px;'
+                    }
+                ],
+                listeners: {
+                    activate: function(){
+
+                    },
+                    deactivate: function(){
+                        
+                    }
+                }
+            },
+
+            {
+                itemId: 'location_viewing',
+                xtype: 'formpanel',
+                layout: 'vbox',
+                items:[
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Select a Location',
+                        items:[
+                            {
+                                xtype: 'button',
+                                ui: 'back',
+                                text: 'Back',
+                                handler: function() {
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_select'), {type: 'slide', direction: 'right'});
                                 }
                             }
                         ]
@@ -286,14 +356,6 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     },
                     {
                         xtype: 'button',
-                        text: 'Select Location on Map',
-                        ui: 'next',
-                        handler: function() {
-                            this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('map'), {type: 'slide', direction: 'left'});
-                        }
-                    },
-                    {
-                        xtype: 'button',
                         text: 'Send your message!',
                         ui: 'confirm',
                         handler: function() {
@@ -313,7 +375,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
             },
 
             {
-                itemId: 'map',
+                itemId: 'location_map_geo',
                 xtype: 'formpanel',
                 layout: 'fit',
                 scrollable: false,
@@ -328,7 +390,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 ui: 'back',
                                 text: 'Back',
                                 handler: function() {
-                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location'), {type: 'slide', direction: 'right'});
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_select'), {type: 'slide', direction: 'right'});
                                 }
                             }
                         ]
@@ -353,7 +415,59 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                 ],
                 listeners: {
                     activate: function(){
-                        this.down('geolocationmap').recenter();
+                        this.down('geolocationmap').use_geolocation();
+                    },
+                    deactivate: function(){
+                        var my_geo;
+                        my_geo = this.down('geolocationmap').get_position();
+                        this.up('messagecontainer').message.set('latitude', my_geo[0]);
+                        this.up('messagecontainer').message.set('longitude', my_geo[1]);
+                    }
+                }
+            },
+
+            {
+                itemId: 'location_map',
+                xtype: 'formpanel',
+                layout: 'fit',
+                scrollable: false,
+                items:[
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Choose a Location',
+                        items:[
+                            {
+                                xtype: 'button',
+                                ui: 'back',
+                                text: 'Back',
+                                handler: function() {
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_select'), {type: 'slide', direction: 'right'});
+                                }
+                            }
+                        ]
+                    },
+                    Ext.create('connecting-lights-mobile.view.GeolocationMap'),
+                    {
+                        xtype: 'container',
+                        cls: 'padding',
+                        docked: 'bottom',
+                        items: [
+                            {
+                                xtype: 'button',
+                                text: 'Send your message!',
+                                ui: 'confirm',
+                                docked:'bottom',
+                                handler: function() {
+                                    this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
+                                }
+                            }
+                        ]
+                    }
+                ],
+                listeners: {
+                    activate: function(){
+                        this.down('geolocationmap').use_wall_location();
                     },
                     deactivate: function(){
                         var my_geo;

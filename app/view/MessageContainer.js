@@ -244,15 +244,17 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map_geo'), {type: 'slide', direction: 'left'});
-                        }
+                        },
+                        style: 'margin-top: 20px'
                     },
                     {
                         xtype: 'button',
-                        text: 'By Viewing Location',
+                        text: 'By Viewing Station',
                         ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_viewing'), {type: 'slide', direction: 'left'});
-                        }
+                        },
+                        style: 'margin-top: 20px'
                     },
                     {
                         xtype: 'button',
@@ -260,7 +262,8 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         ui: 'forward',
                         handler: function() {
                             this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('location_map'), {type: 'slide', direction: 'left'});
-                        }
+                        },
+                        style: 'margin-top: 20px'
                     }
                     /*{
                         xtype: 'button',

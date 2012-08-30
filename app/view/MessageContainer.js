@@ -335,7 +335,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                         xtype: 'container',
                         cls:'padding',
                         styleHtmlContent: true,
-                        html: ['<p class="context">Select a viewing station:</p>'].join('')
+                        html: ['<p class="">Select a viewing station:</p>'].join('')
                     },
                     {
                         itemId:'locationList',

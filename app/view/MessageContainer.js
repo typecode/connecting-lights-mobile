@@ -529,7 +529,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 }
                             }
                         ]
-                    },
+                    }/*,
                     {
                         xtype: 'container',
                         cls: 'padding',
@@ -542,7 +542,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 }
                             }
                         ]
-                    }
+                    }*/
                 ],
                 listeners: {
                     activate: function(){

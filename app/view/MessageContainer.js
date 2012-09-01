@@ -107,7 +107,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 }
                             }
                         ]
-                        
+
                     },
                     {
                         itemId:'actionbar',
@@ -305,7 +305,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
                     },
                     deactivate: function(){
-                        
+
                     }
                 }
             },
@@ -370,7 +370,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 this.up('messagecontainer').message.set('longitude', my_geo[1]);
                             }
                         }
-                        
+
                     },
                     {
                         xtype: 'button',
@@ -380,7 +380,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                             if(this.up('formpanel').getComponent('locationList').hasSelection()){
                                 this.up('messagecontainer').animateActiveItem(this.up('messagecontainer').getComponent('thanks'), {type: 'slide', direction: 'left'});
                             }
-                            
+
                         },
                         style: 'margin-top: 16px;'
                     }
@@ -390,7 +390,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
 
                     },
                     deactivate: function(){
-                        
+
                     }
                 }
             },
@@ -548,7 +548,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                     activate: function(){
 
                         Ext.Ajax.request({
-                            url: '/connecting-lights-backend/messages.json',
+                            url: 'http://connecting-light.herokuapp.com/messages.json',
                             method: 'POST',
                             jsonData: {
                                 message: {
@@ -562,7 +562,7 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
                                 }
                             },
                             success: function(response){
-                                
+
                             }
                         });
                     },
@@ -573,5 +573,5 @@ Ext.define("connecting-lights-mobile.view.MessageContainer", {
             }
         ]
     }
-    
+
 });

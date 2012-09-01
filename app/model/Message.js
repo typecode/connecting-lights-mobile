@@ -8,7 +8,7 @@ Ext.define('connecting-lights-mobile.model.Message', {
             { name: 'red', type: 'integer' },
             { name: 'green', type: 'integer' },
             { name: 'blue', type: 'integer' },
-            { name: 'location_on_wall', type: 'decimal', defaultValue: 0}
+            { name: 'location_on_wall', type: 'decimal'}
         ]
     }
 });
